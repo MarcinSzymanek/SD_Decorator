@@ -19,6 +19,7 @@ public class Monster
         _attributes.TakeDamage(dmg);
     }
 
+    // Needed for gamestate
     public bool CheckIfDead()
     {
         if (_attributes.Hp < 1)
@@ -27,6 +28,12 @@ public class Monster
         }
 
         return false;
+    }
+
+    // Needed for UI to display attributes
+    public Attributes GetAttributes()
+    {
+        return _attributes;
     }
 
 

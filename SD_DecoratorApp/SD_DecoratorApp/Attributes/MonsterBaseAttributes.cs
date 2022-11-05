@@ -16,5 +16,10 @@
             Damage = dmg;
             ModelScale = scale;
         }
+
+        public override void TakeDamage(int dmg)
+        {
+
+        }
     }
 }

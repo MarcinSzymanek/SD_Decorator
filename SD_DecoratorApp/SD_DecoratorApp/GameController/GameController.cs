@@ -7,9 +7,27 @@ namespace SD_DecoratorApp.GameController;
 public class GameController
 {
     // private UI _ui = new();
-    private Monster player;
+
+
+    
+    private Monster monster;
 
 
 
+    public void attack(Monster source, Monster target)
+    {
+       
+
+    }
+
+    void Buff(Monster target)
+    {
+        
+    }
+
+    public void processTurn()
+    {
+        
+    }
 
 }

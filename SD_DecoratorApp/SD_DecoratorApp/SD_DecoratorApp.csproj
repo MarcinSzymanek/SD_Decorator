@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MonsterGenerator\NewFile1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Monsters" />
     <Folder Include="GameController\" />
   </ItemGroup>
