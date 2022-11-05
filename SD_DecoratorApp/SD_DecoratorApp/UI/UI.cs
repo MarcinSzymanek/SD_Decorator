@@ -9,16 +9,14 @@ namespace SD_DecoratorApp.UI
 {
     public class UI
     {
-        
+        private Monster _monster;
+        private Monster _player;
         public UI(Monster player, Monster monster)
         {
-
+            _player = player;
+            _monster = monster;
         }
-        public void Display()
-        {
-
-        }
-
+        
         public void Render()
         {
 
