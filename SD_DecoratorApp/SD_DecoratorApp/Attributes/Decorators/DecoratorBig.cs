@@ -21,7 +21,7 @@
 
         public override void TakeDamage(int dmg)
         {
-
+            Hp = Hp - dmg;
         }
     }
 }

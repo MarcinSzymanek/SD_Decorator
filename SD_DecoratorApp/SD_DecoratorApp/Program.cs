@@ -1,5 +1,6 @@
 ﻿using Character;
 using Character.Decorators;
+using SD_DecoratorApp.GameController;
 using SD_DecoratorApp.MonsterGenerator;
 using SD_DecoratorApp.Monsters;
 using SD_DecoratorApp.UI;
@@ -12,11 +13,13 @@ DecoratorBig dec = new DecoratorBig(atr);
 Monster m = _gen.SpawnMonster(dec);
 Monster p = _gen.SpawnMonster();
 UI ui = new UI(p, m);
-ui.Render();
+
+GameController gc = new();
+/*ui.Render();
 
 ui.Display("Monster attacks for " + m.GetAttributes().Damage + " Damage!");
 ui.Display("Sometext");
 ui.Display("Monster does things");
 ui.Display("Check log");
-ui.Display("Monster attacks!");
+ui.Display("Monster attacks!");*/
 
