@@ -1,0 +1,66 @@
+@@startuml
+
+MonsterGenerator --> Monster
+MonsterGenerator --> MonsterAttributes
+MonsterAttributes --|> Attributes
+GameController -> MonsterGenerator
+GameController *- Monster
+UI --* GameController
+DecoratorName --|> Attributes
+MonsterGenerator --> DecoratorName
+Monster *- Attributes
+
+class Monster{
+    - Attributes _attr
+    + void Decorate(IDecorator)
+    + void OnDamage()
+}
+
+
+class DecoratorName{
+    - Attributes
+    + void TakeDamage()
+}
+
+class GameController{
+    - UI
+    - Monster player
+    - Monster monster
+    - Attack(Monster source, Monster target)
+    - Buff(Monster target, IDecorator decorator)
+    + void ProcessTurn()
+
+}
+
+class Attributes <<abstract>>{
+    + int Hp
+    + float Size
+    + void TakeDamage(int damage)
+    // etc
+}
+
+class MonsterAttributes{
+    + int Hp
+    + float Size
+    + void TakeDamage(int damage)
+    // etc
+}
+
+
+class MonsterGenerator{
+    - Random rand
+    + Monster SpawnMonster()
+    + Monster SpawnSpecialMonster()
+    + Monster SpawnMonster(Attributes attr)
+}
+
+
+
+class UI{
+    + void Display(string)
+    + void SomeSpecificUIFunc()
+    + void Render()
+}
+
+
+@@enduml
