@@ -1,0 +1,10 @@
+@@startuml
+loop start game
+    GameController -> GameController : ProcessTurn
+ 
+    GameController -> Monster : OnTakeDamage
+Monster -> Attributes : TakeDamage
+Attributes --> Monster : dmg taken
+Monster --> GameController : dmg taken
+
+@@enduml

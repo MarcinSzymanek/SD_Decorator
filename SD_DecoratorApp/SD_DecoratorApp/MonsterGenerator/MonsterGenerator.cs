@@ -8,7 +8,7 @@ namespace SD_DecoratorApp.MonsterGenerator
     public class MonsterGenerator
     {
         Attribute attribute;
-	    
+	    Random rand = new Random();
         public Monster SpawnMonster()
         {
             return new Monster();
