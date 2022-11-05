@@ -1,6 +1,6 @@
 ﻿using System;
 using SD_DecoratorApp.Monsters;
-using SD_DecoratorApp.Attributes;
+using Character;
 //using Character;
 
 namespace SD_DecoratorApp.MonsterGenerator
@@ -8,22 +8,20 @@ namespace SD_DecoratorApp.MonsterGenerator
     public class MonsterGenerator
     {
         Attribute attribute;
-	    public MonsterGenerator()
-	    {
-            Monster SpawnMonster()
-            {
-                return new Monster();
-            }
-            Monster SpawnSpecialMonster()
-            {
-                // Add decorator
-                return new Monster();
-            }
-            Monster SpawnMonster(Attribute attr)
-            {
-                return new Monster(attr);
-            }
-	    }
+	    
+        public Monster SpawnMonster()
+        {
+            return new Monster();
+        }
+        public Monster SpawnSpecialMonster()
+        {
+            // Add decorator
+            return new Monster();
+        }
+        public Monster SpawnMonster(Attributes attr)
+        {
+            return new Monster(attr);
+        }
     }
 
 }
