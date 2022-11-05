@@ -1,4 +1,5 @@
 ﻿using Character;
+using Character.Decorators;
 
 namespace SD_DecoratorApp.Monsters;
 
@@ -18,6 +19,7 @@ public class Monster
     {
         _attributes.TakeDamage(dmg);
     }
+
 
     // Needed for gamestate
     public bool CheckIfDead()

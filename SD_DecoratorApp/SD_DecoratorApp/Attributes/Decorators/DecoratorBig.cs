@@ -1,6 +1,6 @@
 ﻿namespace Character.Decorators
 {
-    public class DecoratorBig : Attributes
+    public class DecoratorBig : Attributes, IDecorator
     {
         private readonly Attributes _attributes;
         
