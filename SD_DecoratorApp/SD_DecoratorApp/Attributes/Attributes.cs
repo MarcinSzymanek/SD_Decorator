@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Character
 {
-	public abstract class Attributes: IAttributes
+	public abstract class Attributes
 	{
-		public abstract string Name{get; protected set; }
-		public abstract int Hp{get; protected set; }
-		public abstract int Damage{get; protected set;}
-		public abstract float Speed{get; protected set;}
-		public abstract float ModelScale{get; protected set;}
-		public abstract void SetAttributes(string name, int hp, int dmg, float spd, float scale);    
-	}	
+		public string Name{get; protected set; }
+		public int Hp{get; protected set; }
+		public int Damage{get; protected set;}
+		public float Speed{get; protected set;}
+		public float ModelScale{get; protected set;}
+        public abstract void TakeDamage(int damage);
+    }	
 }
 
