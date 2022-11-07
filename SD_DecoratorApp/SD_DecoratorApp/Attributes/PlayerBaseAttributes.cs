@@ -1,13 +1,13 @@
 ﻿namespace Character
 {
-    public class MonsterBaseAttributes : Attributes
+    public class PlayerBaseAttributes : Attributes
     {
 
-        public MonsterBaseAttributes()
+        public PlayerBaseAttributes()
         {
-            SetAttributes("Monster", 10, 1, 1.0f, 1.0f);
+            SetAttributes("Player", 20, 2, 1.0f, 1.0f);
         }
-        
+
         public void SetAttributes(string name, int hp, int dmg, float spd, float scale)
         {
             Name = name;

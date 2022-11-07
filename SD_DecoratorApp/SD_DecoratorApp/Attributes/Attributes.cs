@@ -10,7 +10,11 @@ namespace Character
 		public int Damage{get; protected set;}
 		public float Speed{get; protected set;}
 		public float ModelScale{get; protected set;}
-        public abstract void TakeDamage(int damage);
+
+        public void TakeDamage(int damage)
+        {
+            Hp = Hp - damage;
+        }
     }	
 }
 

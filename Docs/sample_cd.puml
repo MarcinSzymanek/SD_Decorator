@@ -1,65 +1,74 @@
 @@startuml
 
-MonsterGenerator --> Monster
-MonsterGenerator --> MonsterAttributes
+MonsterController -u> Monster
+SpecificDecorator <- MonsterController
+MonsterController -d-> MonsterAttributes
 MonsterAttributes --|> Attributes
-GameController -> MonsterGenerator
-GameController *- Monster
+GameController -l-> MonsterController
+GameController *-- Monster
 UI --* GameController
-DecoratorName --|> Attributes
-MonsterGenerator --> DecoratorName
-Monster *- Attributes
+SpecificDecorator --|> Attributes
+SpecificDecorator -u-|> IDecorator
+Attributes -r-* Monster
 
 class Monster{
     - Attributes _attr
-    + void Decorate(IDecorator)
-    + void OnDamage()
+    + void Buff(IDecorator)
+    + event HasTakenDamage
+    + void OnAttacked(int dmg)
+    + void Attack(Monster target)
 }
 
 
-class DecoratorName{
+class SpecificDecorator{
     - Attributes
     + void TakeDamage()
 }
 
 class GameController{
-    - UI
+    - MonsterController _mCtrl
+    - UI _ui
     - Monster player
     - Monster monster
-    - Attack(Monster source, Monster target)
-    - Buff(Monster target, IDecorator decorator)
     + void ProcessTurn()
-
+    // Events
+    + event MonsterAttack
+    + event MonsterTookDmg
 }
 
 class Attributes <<abstract>>{
     + int Hp
     + float Size
-    + void TakeDamage(int damage)
+    + int TakeDamage(int damage)
     // etc
 }
 
 class MonsterAttributes{
     + int Hp
     + float Size
-    + void TakeDamage(int damage)
+    + int TakeDamage(int damage)
     // etc
 }
 
+interface IDecorator{
+    // Specifies that a function should
+    // CHANGE an existing monster
+}
 
-class MonsterGenerator{
+class MonsterController{
     - Random rand
+    // Spawn monsters, buff monsters etc
+    // Has sole access to applying decorators
     + Monster SpawnMonster()
-    + Monster SpawnSpecialMonster()
-    + Monster SpawnMonster(Attributes attr)
+    + Buff(Monster target, IDecorator dec)
 }
 
 
 
 class UI{
     + void Display(string)
-    + void SomeSpecificUIFunc()
-    + void Render()
+    + void ClearScreen()
+    + void Render(Attributes, Attributes)
 }
 
 

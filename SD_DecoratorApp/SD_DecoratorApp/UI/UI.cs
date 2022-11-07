@@ -10,17 +10,12 @@ namespace SD_DecoratorApp.UI
 {
     public class UI
     {
-        private Monster _monster;
-        private Monster _player;
+        private Attributes _playerAttr;
+        private Attributes _monsterAttr;
         private int horizontal = 120;
         private int vertical = 60;
         private List<string> log = new(3);
-        public UI(Monster player, Monster monster)
-        {
-            _player = player;
-            _monster = monster;
-        }
-
+        
         public void Display(string text)
         {
             if (log.Count > 2)
@@ -46,11 +41,11 @@ namespace SD_DecoratorApp.UI
             }
         }
 
-        public void Render()
+        public void Render(Attributes player, Attributes enemy)
         {
-            // Update attributes
-            Attributes playerAttr = _player.GetAttributes();
-            Attributes monsterAttr = _monster.GetAttributes();
+            // update Attributes
+            Attributes playerAttr = player;
+            Attributes monsterAttr = enemy;
             string formatted = "";
             string line = ""; 
             line += "Player";

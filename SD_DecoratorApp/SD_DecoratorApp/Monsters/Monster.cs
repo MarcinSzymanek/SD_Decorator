@@ -20,6 +20,10 @@ public class Monster
         _attributes.TakeDamage(dmg);
     }
 
+    public void Buff(Attributes attr)
+    {
+        _attributes = attr;
+    }
 
     // Needed for gamestate
     public bool CheckIfDead()

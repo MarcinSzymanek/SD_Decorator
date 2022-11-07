@@ -18,10 +18,5 @@
             Damage = _attributes.Damage;
             ModelScale = _attributes.ModelScale * 0.8f;
         }
-
-        public override void TakeDamage(int dmg)
-        {
-            Hp = Hp - dmg;
-        }
     }
 }
