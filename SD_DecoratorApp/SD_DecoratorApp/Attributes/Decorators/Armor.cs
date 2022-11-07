@@ -32,7 +32,7 @@ namespace Character.Decorators
                 dmgTaken = 0;
             }
             
-            Hp = Hp - dmgTaken;
+            base.TakeDamage(dmgTaken);
         }
         
     }

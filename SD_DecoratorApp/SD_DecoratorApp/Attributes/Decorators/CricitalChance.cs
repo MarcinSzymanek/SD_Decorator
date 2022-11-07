@@ -2,7 +2,24 @@
 {
     public class CriticalChance : Attributes, IDecorator
     {
+        private Random rand = new Random();
+        private int _damage;
+        public override int Damage {
+            get
+            {
+                int dice = rand.Next(100);
+                if (dice < 25)
+                {
+                    return Damage * 2;
+                }
 
+                return Damage;
+            }
+            protected set
+            {
+                _damage = value;
+            }
+        }
 
         private readonly Attributes _attributes;
         public CriticalChance(Attributes attributes)
@@ -15,20 +32,10 @@
         private void SetAttributes()
         {
             Name =  _attributes.Name;
-            Hp = (int)(_attributes.Hp * 1.5f);
-            Speed = _attributes.Speed * 0.9f;
+            Hp = (int)(_attributes.Hp);
+            Speed = _attributes.Speed;
             Damage = _attributes.Damage;
-            ModelScale = _attributes.ModelScale * 0.8f;
+            ModelScale = _attributes.ModelScale;
         }
-
-        public void TakeDamage(int damage)
-        {
-            Random rnd = new Random();
-            var crit = rnd.Next(1, 101);
-            var x = crit < 25 ? damage = damage * 2 : damage = damage;
-            Hp = Hp + damage;
-        }
-
-
     }
 }
