@@ -61,5 +61,28 @@ namespace SD_DecoratorApp.UI
             }
             Console.SetCursorPosition(0, 0);
         }
+
+        public void DisplayMainMenu()
+        {
+            Console.Write("Zero player game Decorator pattern demonstration\n\n");
+            Console.Write("Rules: \n Player and monster take turns attacking until one of them is dead.");
+            Console.Write("Once player defeats a monster, a new one is spawned\n");
+            Console.Write("Menu:\n");
+            Console.Write("a : Colored hit points in UI");
+            Console.Write("b : More special monsters");
+            Console.Write("c : Extra strong player");
+            Console.Write("s : Start game");
+        }
+
+        public char ChooseFromMenu()
+        {
+            string? input = null;
+            while (String.IsNullOrEmpty(input))
+            {
+                input = Console.ReadLine();
+            }
+
+            return input[0];
+        }
     }
 }
