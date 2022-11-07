@@ -4,12 +4,13 @@ using Character;
 using Character.Decorators;
 using SD_DecoratorApp.MonsterGenerator;
 using SD_DecoratorApp.Monsters;
+using SD_DecoratorApp.UI;
 
 namespace SD_DecoratorApp.GameController;
 
 public class GameController
 {
-    private UI.UI _ui;
+    private UI.UIBase _ui;
     private MonsterController _monsterController;
 
     private Monster player;
@@ -37,7 +38,8 @@ public class GameController
         _monsterController = new();
         player = _monsterController.SpawnPlayer();
         monster = _monsterController.SpawnMonster();
-        _ui = new();
+        UI.UI ui = new UI.UI();
+        _ui = new DecoratorColoredStats(ui);
     }
 
     public void RunGame()
