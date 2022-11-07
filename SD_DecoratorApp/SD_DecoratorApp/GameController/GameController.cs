@@ -12,9 +12,7 @@ public class GameController
     private Monster player;
     private Monster  monster;
     private Attributes source_attr;
-
     private Attributes target_attr;
-
     private bool fighttillDeath = false;
 
 
@@ -24,6 +22,7 @@ public class GameController
         target_attr = target.GetAttributes();
 
         target.OnTakeDamage(source_attr.Damage);
+        
     }
     /*
     void Buff(Attributes tar, IDecorator dec)
