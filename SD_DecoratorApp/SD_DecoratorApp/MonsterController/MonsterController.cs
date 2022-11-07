@@ -23,7 +23,7 @@ namespace SD_DecoratorApp.MonsterGenerator
 
         public Monster SpawnPlayer()
         {
-            return new Monster(new PlayerBaseAttributes());
+            return new Monster(new Armor(new PlayerBaseAttributes(), 10));
         }
 
         public void Buff(Monster target)

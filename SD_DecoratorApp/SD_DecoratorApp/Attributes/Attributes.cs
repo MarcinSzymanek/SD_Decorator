@@ -1,3 +1,4 @@
+using Character.Decorators;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -15,6 +16,9 @@ namespace Character
         {
             Hp = Hp - damage;
         }
-    }	
+    }
+
+
+
 }
 
