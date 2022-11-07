@@ -12,7 +12,7 @@ namespace Character
 		public float Speed{get; protected set;}
 		public float ModelScale{get; protected set;}
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             Hp = Hp - damage;
         }

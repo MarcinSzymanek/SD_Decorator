@@ -18,6 +18,11 @@ namespace SD_DecoratorApp.MonsterGenerator
             {
                 return new Monster(new DecoratorBig(new MonsterBaseAttributes()));
             }
+
+            if (dice == 1)
+            {
+                return new Monster(new Armor(new MonsterBaseAttributes(), 1));
+            }
             return new Monster();
         }
 
