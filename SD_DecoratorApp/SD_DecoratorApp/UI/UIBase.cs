@@ -1,9 +1,10 @@
-﻿using Character;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SD_DecoratorApp.Attributes;
+ 
 
 namespace SD_DecoratorApp.UI
 {
@@ -25,7 +26,8 @@ namespace SD_DecoratorApp.UI
             return formatted;
         }
 
-        public abstract void Render(Attributes player, Attributes enemy);
+        public abstract void Render(IAttributes player, 
+            IAttributes enemy);
 
         public void Display(string text)
         {

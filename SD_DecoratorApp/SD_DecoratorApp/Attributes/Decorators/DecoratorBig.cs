@@ -1,4 +1,4 @@
-﻿namespace Character.Decorators
+﻿namespace SD_DecoratorApp.Attributes.Decorators
 {
     public class DecoratorBig : Attributes, IDecorator
     {

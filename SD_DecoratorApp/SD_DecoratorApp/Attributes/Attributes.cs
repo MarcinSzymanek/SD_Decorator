@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-
-namespace Character
+namespace SD_DecoratorApp.Attributes
 {
 	public abstract class Attributes
 	{

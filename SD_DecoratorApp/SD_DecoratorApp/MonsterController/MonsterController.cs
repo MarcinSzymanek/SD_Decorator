@@ -1,11 +1,10 @@
-﻿using System;
+﻿using SD_DecoratorApp.Attributes;
+using SD_DecoratorApp.Attributes.Decorators;
 using SD_DecoratorApp.Monsters;
-using Character;
-using Character.Decorators;
 
 //using Character;
 
-namespace SD_DecoratorApp.MonsterGenerator
+namespace SD_DecoratorApp.MonsterController
 {
     public class MonsterController
     {

@@ -1,46 +1,48 @@
-﻿using Character;
-using Character.Decorators;
+﻿using SD_DecoratorApp.Attributes;
 
-namespace SD_DecoratorApp.Monsters;
-
-public class Monster
+namespace SD_DecoratorApp.Monsters
 {
-    private Attributes _attributes;
-    public Monster(Attributes attributes)
+    public class Monster
     {
-        _attributes = attributes;
-    }
+        private Attributes _attributes;
 
-    public Monster()
-    {
-        _attributes = new MonsterBaseAttributes();
-    }
-    public void OnTakeDamage(int dmg)
-    {
-        _attributes.TakeDamage(dmg);
-    }
-
-    public void Buff(Attributes attr)
-    {
-        _attributes = attr;
-    }
-
-    // Needed for gamestate
-    public bool CheckIfDead()
-    {
-        if (_attributes.Hp < 1)
+        public Monster(Attributes attributes)
         {
-            return true;
+            _attributes = attributes;
         }
 
-        return false;
+        public Monster()
+        {
+            _attributes = new MonsterBaseAttributes();
+        }
+
+        public void OnTakeDamage(int dmg)
+        {
+            _attributes.TakeDamage(dmg);
+        }
+
+        public void Buff(Attributes attr)
+        {
+            _attributes = attr;
+        }
+
+        // Needed for gamestate
+        public bool CheckIfDead()
+        {
+            if (_attributes.Hp < 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        // Needed for UI to display attributes
+        public Attributes GetAttributes()
+        {
+            return _attributes;
+        }
+
+
     }
-
-    // Needed for UI to display attributes
-    public Attributes GetAttributes()
-    {
-        return _attributes;
-    }
-
-
 }

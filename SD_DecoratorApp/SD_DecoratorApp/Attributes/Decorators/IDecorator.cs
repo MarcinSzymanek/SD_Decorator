@@ -1,6 +1,7 @@
-﻿namespace Character.Decorators;
-
-public interface IDecorator
+﻿namespace SD_DecoratorApp.Attributes.Decorators
 {
-    void TakeDamage(int damage);
+    public interface IDecorator
+    {
+        void TakeDamage(int damage);
+    }
 }
