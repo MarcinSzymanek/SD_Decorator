@@ -15,9 +15,6 @@ public class GameController
 
     private Monster player;
     private Monster  monster;
-    private Attributes source_attr;
-
-    private Attributes target_attr;
 
     private bool fighttillDeath = false;
     private bool _running = false;
@@ -38,6 +35,7 @@ public class GameController
         _monsterController = new();
         player = _monsterController.SpawnPlayer();
         monster = _monsterController.SpawnMonster();
+        //monster = new Monster(new DecoratorBig(new MonsterBaseAttributes()));
         UI.UI ui = new UI.UI();
         _ui = new DecoratorColoredStats(ui);
     }
