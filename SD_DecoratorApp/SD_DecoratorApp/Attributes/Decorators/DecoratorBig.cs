@@ -1,23 +1,30 @@
 ﻿namespace Character.Decorators
 {
-    public class DecoratorBig : Attributes, IDecorator
+    public class DecoratorBig : AttributesDecorator
     {
-        private readonly Attributes _attributes;
-        
-        public DecoratorBig(Attributes attributes)
+        public override string Name
         {
-            _attributes = attributes;
-            SetAttributes();
+            get => "Big " + base.Name;
         }
 
-        private void SetAttributes()
+        public override int Damage
         {
-            Name = "Big" + _attributes.Name;
-            Hp = (int)(_attributes.Hp * 1.5f);
-            Speed = _attributes.Speed * 0.9f;
-            Damage = _attributes.Damage;
-            ModelScale = _attributes.ModelScale * 0.8f;
+            get => base.Damage + 2;
         }
 
+        public override int Hp
+        {
+            get => (int)(base.Hp + 5);
+        }
+
+        public DecoratorBig(Attributes attributes) : base(attributes)
+        {
+
+        }
+
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+        }
     }
 }

@@ -14,21 +14,29 @@ namespace SD_DecoratorApp.MonsterGenerator
         {
             // Roll dice. 1 in 10 chance of special
             int dice = rand.Next(10);
-            if (dice == 0)
+            if (dice < 4)
             {
-                return new Monster(new DecoratorBig(new MonsterBaseAttributes()));
-            }
+                int newDice = rand.Next(10);
+                {
+                    if (newDice < 3)
+                    {
+                        return new Monster(new DecoratorBig(new MonsterBaseAttributes()));
+                    }
 
-            if (dice == 1)
-            {
-                return new Monster(new Armor(new MonsterBaseAttributes(), 1));
+                    if (newDice < 6)
+                    {
+                        return new Monster(new Armor(new MonsterBaseAttributes(), 1));
+                    }
+
+                    return new Monster(new CriticalChance(new MonsterBaseAttributes()));
+                }
             }
             return new Monster();
         }
 
         public Monster SpawnPlayer()
         {
-            return new Monster(new Armor(new PlayerBaseAttributes(), 10));
+            return new Monster(new Armor(new PlayerBaseAttributes(), 1));
         }
 
         public void Buff(Monster target)

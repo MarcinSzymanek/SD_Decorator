@@ -1,41 +1,31 @@
 ﻿namespace Character.Decorators
 {
-    public class CriticalChance : Attributes, IDecorator
+    public class CriticalChance : AttributesDecorator
     {
-        private Random rand = new Random();
-        private int _damage;
+        private readonly Random _rand = new Random();
+        public override string Name
+        {
+            get => "Critical  " + base.Name;
+        }
         public override int Damage {
             get
             {
-                int dice = rand.Next(100);
+                int dice = _rand.Next(100);
                 if (dice < 25)
                 {
-                    return Damage * 2;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Critical Strike!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return base.Damage * 2;
                 }
 
-                return Damage;
-            }
-            protected set
-            {
-                _damage = value;
+                return base.Damage;
             }
         }
-
-        private readonly Attributes _attributes;
-        public CriticalChance(Attributes attributes)
+       public CriticalChance(Attributes attributes) : base(attributes)
         {
-            _attributes = attributes;
-            SetAttributes();
+            
         }
 
-
-        private void SetAttributes()
-        {
-            Name =  _attributes.Name;
-            Hp = (int)(_attributes.Hp);
-            Speed = _attributes.Speed;
-            Damage = _attributes.Damage;
-            ModelScale = _attributes.ModelScale;
-        }
     }
 }

@@ -3,25 +3,17 @@
 namespace Character.Decorators
 {
 
-    public class Armor : Attributes, IDecorator
+    public class Armor : AttributesDecorator
     {
-
-        private readonly Attributes _attributes;
-        private int _armor;
-        public Armor(Attributes attributes, int armor)
+        private readonly int _armor;
+        public override string Name
         {
-            _attributes = attributes;
-            SetAttributes();
+            get => "Armored " + base.Name;
+        }
+        public Armor(Attributes attributes, int armor) : base(attributes)
+        {
             _armor = armor;
 
-        }
-        private void SetAttributes()
-        {
-            Name = "Armored" + _attributes.Name;
-            Hp = (int)(_attributes.Hp);
-            Speed = _attributes.Speed;
-            Damage = _attributes.Damage;
-            ModelScale = _attributes.ModelScale;
         }
 
         public override void TakeDamage(int damage)
@@ -31,7 +23,10 @@ namespace Character.Decorators
             {
                 dmgTaken = 0;
             }
-            
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Blocked: " + _armor);
+            Console.ForegroundColor = ConsoleColor.White;
             base.TakeDamage(dmgTaken);
         }
         
