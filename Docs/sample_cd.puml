@@ -4,11 +4,13 @@ MonsterController -u> Monster
 SpecificDecorator <- MonsterController
 MonsterController -d-> MonsterAttributes
 MonsterAttributes --|> Attributes
-GameController -l-> MonsterController
+GameController *-l- MonsterController
 GameController *-- Monster
 UI --* GameController
-SpecificDecorator --|> Attributes
-SpecificDecorator -u-|> IDecorator
+SpecificDecorator --|> AttributesDecorator
+AttributesDecorator --|> Attributes
+AttributesDecorator *- Attributes
+
 Attributes -r-* Monster
 
 class Monster{
@@ -19,9 +21,8 @@ class Monster{
     + void Attack(Monster target)
 }
 
-
 class SpecificDecorator{
-    - Attributes
+    + override attribute get;
     + void TakeDamage()
 }
 
@@ -30,10 +31,8 @@ class GameController{
     - UI _ui
     - Monster player
     - Monster monster
-    + void ProcessTurn()
-    // Events
-    + event MonsterAttack
-    + event MonsterTookDmg
+
+    + void RunGame()
 }
 
 class Attributes <<abstract>>{
@@ -43,16 +42,18 @@ class Attributes <<abstract>>{
     // etc
 }
 
+class AttributesDecorator<<abstract>>{
+    - Attributes _attributes
+    + int Hp => return _attributes.Hp
+    + int TakeDamage(int damage)
+    // etc
+}
+
 class MonsterAttributes{
     + int Hp
     + float Size
     + int TakeDamage(int damage)
     // etc
-}
-
-interface IDecorator{
-    // Specifies that a function should
-    // CHANGE an existing monster
 }
 
 class MonsterController{
