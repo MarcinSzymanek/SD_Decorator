@@ -15,7 +15,8 @@ loop _running == true
     UI <- GameController : Display damage taken, update ui
     
     alt Enemy is dead
-        GameController -> UI : Update defeated monster count
+        GameController -> GameController : update defeated monster count
+        GameController -> UI : Display defeated monster count
         GameController -> MonsterController : SpawnMonster()
         activate MonsterController
         MonsterController -> MonsterController : Build new monster

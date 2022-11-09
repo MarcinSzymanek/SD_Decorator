@@ -6,9 +6,9 @@ namespace Character
 {
 	public abstract class Attributes
 	{
-		public string Name{get; protected set; }
+		public virtual string Name{get; protected set; }
 		public int Hp{get; protected set; }
-		public int Damage{get; protected set;}
+		public virtual int Damage{get; protected set;}
 		public float Speed{get; protected set;}
 		public float ModelScale{get; protected set;}
 
