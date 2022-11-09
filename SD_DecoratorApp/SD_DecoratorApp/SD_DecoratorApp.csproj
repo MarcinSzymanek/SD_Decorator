@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MonsterGenerator\NewFile1.txt" />
+    <None Remove="MonsterController\NewFile1.txt" />
   </ItemGroup>
 
   <ItemGroup>

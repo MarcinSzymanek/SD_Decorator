@@ -2,66 +2,88 @@
 using System.Threading.Channels;
 using Character;
 using Character.Decorators;
+using SD_DecoratorApp.MonsterGenerator;
 using SD_DecoratorApp.Monsters;
+using SD_DecoratorApp.UI;
 
 namespace SD_DecoratorApp.GameController;
 
 public class GameController
 {
-    private UI.UI _ui;
+    private UI.UIBase _ui;
+    private MonsterController _monsterController;
 
     private Monster player;
     private Monster  monster;
-    private Attributes source_attr;
-
-    private Attributes target_attr;
 
     private bool fighttillDeath = false;
-
+    private bool _running = false;
+    private Turn _turn = Turn.PLAYER;
+    private enum Turn
+    {
+        PLAYER = 1,
+        MONSTER = 2
+    };
     public GameController()
     {
         SetupGame();
-        ProcessTurn();
+        RunGame();
     }
 
     private void SetupGame()
     {
-        player = new Monster();
-        monster = new Monster(new DecoratorBig(new MonsterBaseAttributes()));
-        _ui = new(player, monster);
+        _monsterController = new();
+        player = _monsterController.SpawnPlayer();
+        monster = _monsterController.SpawnMonster();
+        //monster = new Monster(new DecoratorBig(new MonsterBaseAttributes()));
+        UI.UI ui = new UI.UI();
+        _ui = new DecoratorColoredStats(ui);
     }
-    public void attack(Monster source, Monster target)
-    {
-        source_attr = source.GetAttributes();
-        target_attr = target.GetAttributes();
 
-        target.OnTakeDamage(source_attr.Damage);
-    }
-    /*
-    void Buff(Attributes tar, IDecorator dec)
+    public void RunGame()
     {
-        tar = (Attribute) dec;
-        
-    }
-    */
-
-    public void ProcessTurn()
-    {
-        while(fighttillDeath == false)
+        _running = true;
+        while (_running)
         {
-            
-            attack(player, monster);
-            _ui.Display("Player " + "Attacks!!");
-            attack(monster, player);
-            _ui.Display("Monster attacks player!");
-            if(player.CheckIfDead() || monster.CheckIfDead())
+            if (_turn == Turn.PLAYER)
             {
-                fighttillDeath = true;
+                ProcessTurn(ref player, ref monster);
             }
-            Thread.Sleep(500);
-            _ui.ClearScreen();
-            _ui.Render();
+            else
+            {
+                ProcessTurn(ref monster, ref player);
+            }
+            
+            if (player.CheckIfDead())
+            {
+                _ui.Display("");
+                _ui.Display("");
+                _ui.Display("");
+                _ui.Display("GAME OVER");
+                _ui.Display("");
+                _running = false;
+            }
+            else if (monster.CheckIfDead())
+            {
+                _ui.Display("Player defeated " + monster.GetAttributes().Name + "!");
+                monster = _monsterController.SpawnMonster();
+            }
+
+            _turn++;
+            if ((int)_turn > 2)
+            {
+                _turn = Turn.PLAYER;
+            }
         }
     }
 
+    public void ProcessTurn(ref Monster source, ref Monster target)
+    {
+        target.OnTakeDamage(source.GetAttributes().Damage);
+
+        _ui.Display(source.GetAttributes().Name + " attacks!!");
+        System.Threading.Thread.Sleep(500);
+        _ui.ClearScreen();
+        _ui.Render(player.GetAttributes(), monster.GetAttributes());
+    }
 }
