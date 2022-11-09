@@ -15,10 +15,7 @@ Attributes -r-* Monster
 
 class Monster{
     - Attributes _attr
-    + void Buff(IDecorator)
-    + event HasTakenDamage
     + void OnAttacked(int dmg)
-    + void Attack(Monster target)
 }
 
 class SpecificDecorator{

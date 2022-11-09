@@ -1,0 +1,6 @@
+@@startuml
+activate Monster
+Monster->MonsterAttributes : TakeDamage(dmg)
+activate MonsterAttributes
+return dmg taken
+@@enduml

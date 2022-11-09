@@ -1,0 +1,13 @@
+@@startuml
+activate Monster
+Monster->DecoratorArmoured : TakeDamage
+activate DecoratorArmoured
+DecoratorArmoured -> DecoratorArmoured : reduce damage
+DecoratorArmoured -> MonsterBaseAttributes : TakeDamage
+activate MonsterBaseAttributes
+return damage taken
+return damage taken
+@@enduml
+
+activate Monster2
+Monster2 ->

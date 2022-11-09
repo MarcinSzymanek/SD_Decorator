@@ -24,10 +24,11 @@ namespace Character.Decorators
                 dmgTaken = 0;
             }
 
+            base.TakeDamage(dmgTaken);
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Blocked: " + _armor);
             Console.ForegroundColor = ConsoleColor.White;
-            base.TakeDamage(dmgTaken);
         }
         
     }
