@@ -1,10 +1,26 @@
-﻿namespace SD_DecoratorApp.UI;
-public abstract class UIBase 
+namespace SD_DecoratorApp.UI;
+
+public abstract class UIBase
 {
-    protected readonly List<string> _log = new(3);
+    private int _maxLogCount;
+    protected readonly List<string> _log;
+
+    public UIBase()
+    {
+        _maxLogCount = 2;
+        _log = new List<string>(_maxLogCount);
+    }
+    public UIBase(int maxLog)
+    {
+        _maxLogCount = maxLog;
+        _log = new List<string>(_maxLogCount);
+    }
+
+   
     protected void Separate(ref string line)
     {
         while (line.Length < 20)
+
         {
             line += ' ';
         }
@@ -18,6 +34,7 @@ public abstract class UIBase
     }
 
     public abstract void Render(Attributes.Attributes player, Attributes.Attributes enemy);
+
 
     public void Display(string text)
     {
