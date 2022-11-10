@@ -150,15 +150,20 @@ public class GameController
         {
             var f = new Flavour();
             int newDice = _rand.Next(100);
-            if (newDice < 50)
+            if (newDice < 40)
             {
                 f.text = "KABLAAAM!";
                 f.color = ConsoleColor.DarkRed;
             }
-            else
+            else if(newDice < 80)
             {
                 f.text = "SLASH!!!";
                 f.color = ConsoleColor.DarkMagenta;
+            }
+            else
+            {
+                f.text = "OW!";
+                f.color = ConsoleColor.DarkBlue;
             }
 
             return f;
