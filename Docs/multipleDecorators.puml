@@ -1,0 +1,10 @@
+@@startuml
+activate Context
+Context -> Decorator1 : Operation()
+activate Decorator1
+Decorator1 -> Decorator1 : Add functionality
+Decorator1 -> Decorator2 : Operation()
+activate Decorator2
+Decorator2 -> Decorator2 : Add functionality
+Decorator2 -> Decorator3 : Operation() ... etc
+@@enduml

@@ -7,9 +7,22 @@ using System.Threading.Tasks;
 
 namespace SD_DecoratorApp.UI
 {
-    public abstract class UIBase 
+    public abstract class UIBase
     {
-        protected readonly List<string> _log = new(3);
+        private int _maxLogCount;
+
+        public UIBase()
+        {
+            _maxLogCount = 2;
+            _log = new List<string>(_maxLogCount);
+        }
+        public UIBase(int maxLog)
+        {
+            _maxLogCount = maxLog;
+            _log = new List<string>(_maxLogCount);
+        }
+
+        protected readonly List<string> _log;
         protected void Separate(ref string line)
         {
             while (line.Length < 20)
@@ -27,7 +40,7 @@ namespace SD_DecoratorApp.UI
 
         public abstract void Render(Attributes player, Attributes enemy);
 
-        public void Display(string text)
+        public virtual void Display(string text)
         {
             if (_log.Count > 2)
             {
@@ -51,6 +64,7 @@ namespace SD_DecoratorApp.UI
                 Console.WriteLine(item);
             }
         }
+
 
         public void ClearScreen()
         {

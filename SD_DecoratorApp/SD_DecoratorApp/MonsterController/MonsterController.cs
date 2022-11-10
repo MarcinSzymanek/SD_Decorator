@@ -12,9 +12,9 @@ namespace SD_DecoratorApp.MonsterGenerator
         Random rand = new Random();
         public Monster SpawnMonster()
         {
-            // Roll dice. 1 in 10 chance of special
+            // Roll dice. 6 in 10 chance of special
             int dice = rand.Next(10);
-            if (dice < 4)
+            if (dice < 6)
             {
                 int newDice = rand.Next(10);
                 {
@@ -39,6 +39,7 @@ namespace SD_DecoratorApp.MonsterGenerator
             return new Monster(new Armor(new PlayerBaseAttributes(), 1));
         }
 
+        // Unused: no time to figure out runtime buffing/debuffing
         public void Buff(Monster target)
         {
             // Replace DecoratorBig with relevant buff: Add more decorators and roll dice

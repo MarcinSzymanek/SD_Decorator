@@ -13,8 +13,6 @@
                 int dice = _rand.Next(100);
                 if (dice < 25)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Critical Strike!");
                     Console.ForegroundColor = ConsoleColor.White;
                     return base.Damage * 2;
                 }
