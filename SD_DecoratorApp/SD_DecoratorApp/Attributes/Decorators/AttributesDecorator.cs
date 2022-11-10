@@ -4,22 +4,12 @@ public abstract class AttributesDecorator : Attributes
 {
     private Attributes _attributes;
 
-    public override string Name
-    {
-        get
-        {
-            return _attributes.Name;
-        }
-    }
+    public override string Name => _attributes.Name;
 
-    public override int Damage { get => _attributes.Damage; }
-    public override int Hp { get => _attributes.Hp; }
-    public override float Speed
-    {
-        get => _attributes.Speed;
-    }
+    public override int Damage => _attributes.Damage;
 
-    public override float ModelScale { get => _attributes.ModelScale; }
+    public override int Hp => _attributes.Hp;
+    public override float Speed => _attributes.Speed;
 
     public AttributesDecorator(Attributes attributes) : base(attributes.Name, attributes.Hp, attributes.Damage, attributes.Speed, attributes.ModelScale)
     {
