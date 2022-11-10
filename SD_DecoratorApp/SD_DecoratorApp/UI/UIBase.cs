@@ -52,17 +52,23 @@ public abstract class UIBase
             _log.Add(text);
         }
 
-        Console.SetCursorPosition(0, 5);
+        
         // clears log area
-        for (int i = 0; i < 4; i++)
-        {
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-        }
+        ClearLog();
         // writes the log
         Console.SetCursorPosition(0, 5);
         foreach (string item in _log)
         {
             Console.WriteLine(item);
+        }
+    }
+
+    public void ClearLog()
+    {
+        Console.SetCursorPosition(0, 5);
+        for (int i = 0; i < 4; i++)
+        {
+            Console.WriteLine(new string(' ', Console.WindowWidth));
         }
     }
 
@@ -76,10 +82,20 @@ public abstract class UIBase
         Console.SetCursorPosition(0, 0);
     }
 
+    public void ClearAll()
+    {
+        Console.SetCursorPosition(0, 0);
+        for (int j = 0; j < Console.WindowHeight; j++)
+        {
+            Console.WriteLine(new string(' ', Console.WindowWidth));
+        }
+        Console.SetCursorPosition(0, 0);
+    }
+
     public void DisplaySpecial(string text, ConsoleColor color)
     {
-        int posx = _rand.Next(7);
-        int posy = _rand.Next(9, 11);
+        int posx = _rand.Next(11);
+        int posy = _rand.Next(9, 13);
         Console.SetCursorPosition(posx, posy);
         Console.ForegroundColor = color;
         Console.WriteLine(text);
@@ -100,12 +116,13 @@ public abstract class UIBase
         Console.Write("Rules: \nPlayer and monster take turns attacking until one of them is dead.\n");
         Console.Write("Once player defeats a monster, a new one is spawned\n\n");
         Console.Write("Menu:\n");
-        Console.Write("a : Colored hit points in UI\n");
-        Console.Write("b : Extra strong player\n");
+        Console.Write("a : Toggle colored hit points in UI\n");
+        Console.Write("b : Toggle Extra strong player\n");
         Console.Write("s : Start game\n");
         Console.Write("q : Quit\n");
     }
 
+    
     public char ChooseFromMenu()
     {
         string? input = null;

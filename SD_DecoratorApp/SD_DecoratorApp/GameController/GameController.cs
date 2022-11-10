@@ -24,10 +24,18 @@ public class GameController
     public GameController()
     {
         _ui = new UI.UI();
-        _ui.DisplayMainMenu();
+        InitMenu();
+        
+    }
+
+    private void InitMenu()
+    {
         char c = ' ';
+
+        _ui.DisplayMainMenu();
+
         bool godMode = false;
-        bool coloredUi = false;
+        bool coloredUi = true;
         while (c != 's' && c != 'q')
         {
             c = _ui.ChooseFromMenu();
@@ -101,19 +109,28 @@ public class GameController
                 _ui.Display("");
                 System.Threading.Thread.Sleep(500);
                 _ui.Display("Slain by " + _monster.GetAttributes().Name);
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(500);
+                _ui.Display("");
+                System.Threading.Thread.Sleep(500);
                 _ui.Display(_score + " Monsters defeated!");
                 _running = false;
             }
             else if (_monster.CheckIfDead())
             {
+                _ui.Display("");
+                System.Threading.Thread.Sleep(200);
+                _ui.Display("");
+                System.Threading.Thread.Sleep(200);
                 _ui.Display("Player defeated " + _monster.GetAttributes().Name + "!");
                 System.Threading.Thread.Sleep(500);
                 _monster = _monsterController.SpawnMonster();
 
                 _ui.Display("A wild " + _monster.GetAttributes().Name + " appears!");
+                
                 _ui.Render(_player.GetAttributes(), _monster.GetAttributes());
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(500);
+                _ui.Display("");
+                System.Threading.Thread.Sleep(500);
                 _score++;
                 _ui.UpdateScore(_score);
             }
@@ -124,6 +141,10 @@ public class GameController
                 _turn = Turn.PLAYER;
             }
         }
+        Console.WriteLine("Press any key to go to menu");
+        Console.ReadKey();
+        _ui.ClearAll();
+        InitMenu();
     }
 
     public void ProcessTurn(ref Monster source, ref Monster target)
