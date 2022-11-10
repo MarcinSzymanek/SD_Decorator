@@ -1,6 +1,10 @@
 ﻿namespace SD_DecoratorApp.UI;
 public class UI : UIBase
 {
+    /*
+     * This was a default implementation of a UI, born from a misunderstanding of the
+     * Decorator pattern. Does not color creature hit points, and is therefore useless
+     */
     public override void Render(Attributes.Attributes player, Attributes.Attributes enemy)
     {
         Console.SetCursorPosition(0, 0);

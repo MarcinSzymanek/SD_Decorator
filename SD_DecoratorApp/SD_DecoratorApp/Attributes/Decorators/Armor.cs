@@ -2,6 +2,10 @@
 
 public class Armor : AttributesDecorator
 {
+     /*
+      * Makes a monster take less damage by reducing incoming dmg in TakeDamage
+      * method before calling base version of this method
+      */
     private readonly int _armor;
     public override string Name
     {

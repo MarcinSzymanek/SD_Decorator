@@ -4,6 +4,11 @@ using SD_DecoratorApp.Monsters;
 
 
 namespace SD_DecoratorApp.MonsterController;
+/*
+ * This is a factory class which was also supposed to be responsible for
+ * buffing creatures after their creation (unimplemented)
+ * Rolls a dice to figure out if the monster is a special variant, and which special variant it is
+ */
 public class MonsterController
 {
     Random rand = new Random();

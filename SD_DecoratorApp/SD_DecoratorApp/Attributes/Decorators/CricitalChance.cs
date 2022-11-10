@@ -2,6 +2,10 @@ namespace SD_DecoratorApp.Attributes.Decorators;
 
 public class CriticalChance : AttributesDecorator
 {
+    /*
+     * Adds a random critical damage functionality, by overriding base Damage property
+     * getter
+     */
     private readonly Random _rand = new Random();
     public override string Name
     {

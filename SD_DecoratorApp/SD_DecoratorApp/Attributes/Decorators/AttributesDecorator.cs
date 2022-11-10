@@ -2,6 +2,11 @@
 
 public abstract class AttributesDecorator : Attributes
 {
+    /*
+     * Base decorator class for attributes. Defines the interface for attribute-based decorators
+     * References the inner Attributes object, truth be told I'm not sure if it should
+     * But this version definitely works
+     */
     private Attributes _attributes;
 
     public override string Name => _attributes.Name;

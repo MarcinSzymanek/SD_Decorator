@@ -1,6 +1,11 @@
 ﻿namespace SD_DecoratorApp.UI;
 public class DecoratorColoredStats : UIBase
 {
+    /*
+     * This was originally supposed to be a decorator, but with current ui
+     * It was impossible to add as a simple decorated function. This implementation
+     * works as a bit of a deranged Strategy pattern, overriding the Render function
+     */
     private UIBase _uiBase;
     public DecoratorColoredStats(UIBase uiBase)
     {

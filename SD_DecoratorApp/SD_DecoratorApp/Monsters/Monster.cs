@@ -1,6 +1,11 @@
 ﻿using SD_DecoratorApp.Attributes;
 
 namespace SD_DecoratorApp.Monsters;
+/*
+ * Simplistic game object class
+ * Contains attributes, a function to take damage and to check if it is dead
+ * Decorating happens to _attributes in MonsterController
+ */
 public class Monster
 {
     private Attributes.Attributes _attributes;
@@ -18,6 +23,7 @@ public class Monster
         return(_attributes.TakeDamage(dmg));
     }
 
+    // Untested and unused
     public void Buff(Attributes.Attributes attr)
     {
         _attributes = attr;
@@ -34,7 +40,7 @@ public class Monster
         return false;
     }
 
-    // Needed for UI to display attributes
+    // Needed by UI and game logic
     public Attributes.Attributes GetAttributes()
     {
         return _attributes;

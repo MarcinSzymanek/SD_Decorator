@@ -2,11 +2,12 @@ namespace SD_DecoratorApp.Attributes;
 
 public abstract class Attributes
 {
-    public virtual string Name
-    {
-        get; protected set;
-    }
-
+    /*
+     * Contains everything necessary to make 2 creatures fight each other to the death
+     * This class must be overriden. *BaseAttributes classes just set the properties,
+     * The BaseAttributes implementations of this class are the ones being decorated
+     */
+    
     public Attributes(string name, int hp, int damage, float speed, float modelScale)
     {
         Name = name;
@@ -15,7 +16,7 @@ public abstract class Attributes
         Speed = speed;
         ModelScale = modelScale;
     }
-
+    public virtual string Name { get; protected set; }
     public virtual int Hp{get; private set; }
     public virtual int Damage{get; protected set;}
     public virtual float Speed{get; protected set;}

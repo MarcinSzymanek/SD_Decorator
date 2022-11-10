@@ -2,6 +2,9 @@
 {
     public class DecoratorBig : AttributesDecorator
     {
+        /*
+         * Makes the monster stronger and tougher by overriding damage and hp getters
+         */
         public override string Name
         {
             get => "Big " + base.Name;
