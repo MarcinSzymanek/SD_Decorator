@@ -12,21 +12,24 @@ public class MonsterController
           // Roll dice. 6 in 10 chance of special
           int dice = rand.Next(10);
           if (dice < 6)
-          int newDice = rand.Next(10);
           {
-              if (newDice < 3)
+              int newDice = rand.Next(10);
               {
-                  return new Monster(new DecoratorBig(new MonsterBaseAttributes()));
-              }
+                  if (newDice < 3)
+                  {
+                      return new Monster(new DecoratorBig(new MonsterBaseAttributes()));
+                  }
 
-              if (newDice < 6)
-              {
-                  return new Monster(new Armor(new MonsterBaseAttributes(), 1));
-              }
+                  if (newDice < 6)
+                  {
+                      return new Monster(new Armor(new MonsterBaseAttributes(), 1));
+                  }
 
-              return new Monster(new CriticalChance(new MonsterBaseAttributes()));
+                  return new Monster(new CriticalChance(new MonsterBaseAttributes()));
+              }
           }
-        return new Monster();
+          
+          return new Monster();
     }
 
 
@@ -34,7 +37,7 @@ public class MonsterController
     public void Buff(Monster target)
     {
         // Replace DecoratorBig with relevant buff: Add more decorators and roll dice
-        Attributes newAttr = new DecoratorBig(target.GetAttributes());
+        Attributes.Attributes newAttr = new DecoratorBig(target.GetAttributes());
         target.Buff(newAttr);
     }
 

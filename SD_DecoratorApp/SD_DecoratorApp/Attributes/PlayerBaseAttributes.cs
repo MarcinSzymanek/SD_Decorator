@@ -1,4 +1,4 @@
-namespace SD_DecoratorApp.Attributes;
+namespace SD_DecoratorApp.Attributes
 {
     public class PlayerBaseAttributes : Attributes
     {
