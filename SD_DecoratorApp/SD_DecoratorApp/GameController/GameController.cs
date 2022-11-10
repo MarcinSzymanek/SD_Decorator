@@ -123,7 +123,8 @@ public class GameController
 
     public void ProcessTurn(ref Monster source, ref Monster target)
     {
-        _ui.Display(source.GetAttributes().Name + " attacks for " + source.GetAttributes().Damage + "!");
+        int damage = source.GetAttributes().Damage;
+        _ui.Display(source.GetAttributes().Name + " attacks for " + damage + "!");
         var f = PickFlavourText();
         if (f != null)
         {
@@ -131,7 +132,7 @@ public class GameController
             System.Threading.Thread.Sleep(250);
         }
         System.Threading.Thread.Sleep(400);
-        int taken = target.OnTakeDamage(source.GetAttributes().Damage);
+        int taken = target.OnTakeDamage(damage);
         _ui.Display(target.GetAttributes().Name + " took " + taken + " damage");
         System.Threading.Thread.Sleep(500);
         _ui.ClearScreen();

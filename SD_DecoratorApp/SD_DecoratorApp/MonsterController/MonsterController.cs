@@ -52,9 +52,11 @@ public class MonsterController
         {
             var baseAttr = new PlayerBaseAttributes();
             var big = new DecoratorBig(baseAttr);
-            var armor = new Armor(big, 1);
-            var god = new CriticalChance(armor);
-            return new Monster(god);
+            var bigger = new DecoratorBig(big);
+            var tough = new Armor(bigger, 1);
+            var tougher = new Armor(tough, 1);
+            var seriously = new CriticalChance(tougher);
+            return new Monster(seriously);
         }
 
         return SpawnPlayer();

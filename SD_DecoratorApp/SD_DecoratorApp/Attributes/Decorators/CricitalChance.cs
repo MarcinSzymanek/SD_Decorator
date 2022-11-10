@@ -14,10 +14,10 @@ public class CriticalChance : AttributesDecorator
             if (dice < 25)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                return base.Damage * 2;
+                return (base.Damage+1) * 2;
             }
 
-            return base.Damage;
+            return base.Damage + 1;
         }
     }
     public CriticalChance(Attributes attributes) : base(attributes)
