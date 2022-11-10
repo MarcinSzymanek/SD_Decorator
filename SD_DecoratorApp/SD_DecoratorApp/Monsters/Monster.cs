@@ -1,12 +1,10 @@
-﻿using Character;
-using Character.Decorators;
+﻿using SD_DecoratorApp.Attributes;
 
 namespace SD_DecoratorApp.Monsters;
-
 public class Monster
 {
-    private Attributes _attributes;
-    public Monster(Attributes attributes)
+    private Attributes.Attributes _attributes;
+    public Monster(Attributes.Attributes attributes)
     {
         _attributes = attributes;
     }
@@ -20,7 +18,7 @@ public class Monster
         _attributes.TakeDamage(dmg);
     }
 
-    public void Buff(Attributes attr)
+    public void Buff(Attributes.Attributes attr)
     {
         _attributes = attr;
     }
@@ -37,7 +35,7 @@ public class Monster
     }
 
     // Needed for UI to display attributes
-    public Attributes GetAttributes()
+    public Attributes.Attributes GetAttributes()
     {
         return _attributes;
     }
