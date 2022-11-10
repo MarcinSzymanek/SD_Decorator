@@ -108,7 +108,12 @@ public class GameController
             else if (_monster.CheckIfDead())
             {
                 _ui.Display("Player defeated " + _monster.GetAttributes().Name + "!");
+                System.Threading.Thread.Sleep(500);
                 _monster = _monsterController.SpawnMonster();
+
+                _ui.Display("A wild " + _monster.GetAttributes().Name + " appears!");
+                _ui.Render(_player.GetAttributes(), _monster.GetAttributes());
+                System.Threading.Thread.Sleep(1000);
                 _score++;
                 _ui.UpdateScore(_score);
             }
@@ -131,7 +136,6 @@ public class GameController
             _ui.DisplaySpecial(f.text, f.color);
             System.Threading.Thread.Sleep(250);
         }
-        System.Threading.Thread.Sleep(400);
         int taken = target.OnTakeDamage(damage);
         _ui.Display(target.GetAttributes().Name + " took " + taken + " damage");
         System.Threading.Thread.Sleep(500);
