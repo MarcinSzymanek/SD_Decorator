@@ -16,8 +16,8 @@ public abstract class AttributesDecorator : Attributes
         _attributes = attributes;
     }
 
-    public override void TakeDamage(int damage)
+    public override int TakeDamage(int damage)
     {
-        _attributes.TakeDamage(damage);
+        return(_attributes.TakeDamage(damage));
     }
 }

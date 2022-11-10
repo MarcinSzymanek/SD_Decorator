@@ -46,4 +46,18 @@ public class MonsterController
         return new Monster(new Armor(new PlayerBaseAttributes(), 1));
     }
 
+    public Monster SpawnPlayer(bool godmode)
+    {
+        if (godmode)
+        {
+            var baseAttr = new PlayerBaseAttributes();
+            var big = new DecoratorBig(baseAttr);
+            var armor = new Armor(big, 1);
+            var god = new CriticalChance(armor);
+            return new Monster(god);
+        }
+
+        return SpawnPlayer();
+    }
+
 }

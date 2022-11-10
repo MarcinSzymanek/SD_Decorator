@@ -3,11 +3,12 @@ public class UI : UIBase
 {
     public override void Render(Attributes.Attributes player, Attributes.Attributes enemy)
     {
+        Console.SetCursorPosition(0, 0);
         string formatted = "";
         string line = ""; 
-        line += "Player";
+        line += player.Name;
         Separate(ref line);
-        line += "Monster";
+        line += enemy.Name;
         formatted = AppendLine(ref line, formatted);
         line += "Hp: " + player.Hp;
         Separate(ref line);
@@ -25,4 +26,5 @@ public class UI : UIBase
         formatted = AppendLine(ref line, formatted);
         Console.Write(formatted);
     }
+
 }

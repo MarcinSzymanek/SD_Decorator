@@ -17,9 +17,14 @@ public class DecoratorColoredStats : UIBase
         {
             Console.ForegroundColor = ConsoleColor.Red;
         }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+        }
     }
     public override void Render(Attributes.Attributes player, Attributes.Attributes enemy)
     {
+        Console.SetCursorPosition(0, 0);
         string formatted = "";
         string line = "";
         line += player.Name;

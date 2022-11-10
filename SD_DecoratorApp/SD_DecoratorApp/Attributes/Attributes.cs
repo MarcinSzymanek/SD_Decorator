@@ -21,8 +21,9 @@ public abstract class Attributes
     public virtual float Speed{get; protected set;}
     public virtual float ModelScale{get; protected set;}
   
-    public virtual void TakeDamage(int damage)
+    public virtual int TakeDamage(int damage)
     {
         Hp -= damage;
+        return damage;
     }
 }

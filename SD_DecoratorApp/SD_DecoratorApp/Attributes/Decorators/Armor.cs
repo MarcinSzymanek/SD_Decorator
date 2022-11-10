@@ -13,7 +13,7 @@ public class Armor : AttributesDecorator
 
     }
 
-    public override void TakeDamage(int damage)
+    public override int TakeDamage(int damage)
     {
         int dmgTaken = (damage - _armor);
         if (damage - _armor < 0)
@@ -24,7 +24,7 @@ public class Armor : AttributesDecorator
         Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine("Blocked: " + _armor);
         Console.ForegroundColor = ConsoleColor.White;
-        base.TakeDamage(dmgTaken);
+        return(base.TakeDamage(dmgTaken));
     }
         
 }

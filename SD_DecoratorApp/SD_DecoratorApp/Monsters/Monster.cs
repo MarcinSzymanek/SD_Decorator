@@ -13,9 +13,9 @@ public class Monster
     {
         _attributes = new MonsterBaseAttributes();
     }
-    public void OnTakeDamage(int dmg)
+    public int OnTakeDamage(int dmg)
     {
-        _attributes.TakeDamage(dmg);
+        return(_attributes.TakeDamage(dmg));
     }
 
     public void Buff(Attributes.Attributes attr)
